@@ -1,0 +1,55 @@
+/* estudiante.css - Estilos específicos para estudiantes */
+.materias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.materia {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.materia:hover {
+    background: #e0e0ff;
+}
+
+.tareas {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    text-align: left;
+}
+
+.tareas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tareas li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tareas li:last-child {
+    border-bottom: none;
+}
+
+.campanita {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
