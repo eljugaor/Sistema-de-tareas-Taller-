@@ -1,23 +1,3 @@
-<?php
-    session_start();
-    include('database/Conexion.php');
-    ini_set('display_errors', '0');
-    $user = $_SESSION['usuario'];
-    $sql = "SELECT * FROM cuenta WHERE correo = '$user'";
-    $execute = mysqli_query($conexion, $sql);
-    while($data = $execute->fetch_assoc()){
-        $tipo_usuario = $data['id_tipo_usuario'];
-        $nombre_usuario = $data['nombre'];
-        $correo = $data['correo'];
-    }
-    if (isset($_SESSION['usuario'])) {
-        if($tipo_usuario == 1){
-            header('Location: estudiante.php');
-        } else if ($tipo_usuario == 2){
-            header('Location: profesor.php');
-        }
-    }
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
