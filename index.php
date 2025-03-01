@@ -10,14 +10,14 @@
     <div class="login-container">
         <h1>San Francisco de Asís</h1>
         <h2>Inicio de Sesión</h2>
-        <form id="loginForm">
+        <form action="database/login_db.php" method="POST">
             <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" required>
-            
+            <input name = "email" type="email" id="email" required >
+
             <label for="password">Contraseña:</label>
-            <input type="password" id="password" required>
+            <input name = "password" type="password" id="password" required>
             
-            <button type="submit">Iniciar Sesión</button>
+            <button>Iniciar Sesión</button>
         </form>
     </div>
     

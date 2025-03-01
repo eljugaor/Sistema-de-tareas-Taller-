@@ -6,6 +6,9 @@ $correo = $_POST['correo_usuario'];
 $contrasena = $_POST['contrasena_usuario'];
 $tipo_usuario = $_POST['tipo_usuario'];
 
+//encriptar contraseña
+$contrasena = hash('sha512', $contrasena);
+
 $register =  "INSERT INTO cuenta (nombre, correo, contraseña, id_tipo_usuario) VALUES ('$nombre', '$correo', '$contrasena', '$tipo_usuario')";
 
 //validar que el correo no exista
@@ -35,7 +38,7 @@ try{
     $execute = mysqli_query($conexion, $register);
     echo '<script>
     alert ("Registro exitoso")
-    window.location = "../index.html";
+    window.location = "../index.php";
     </script>';
 }
 catch(Exception $e){
