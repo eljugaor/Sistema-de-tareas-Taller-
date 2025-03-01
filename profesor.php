@@ -1,9 +1,21 @@
 <?php
     session_start();
+    include('database/Conexion.php');
+    $user = $_SESSION['usuario'];
+    $sql = "SELECT * FROM cuenta WHERE correo = '$user'";
+    $execute = mysqli_query($conexion, $sql);
+    while($data = $execute->fetch_assoc()){
+        $tipo_usuario = $data['id_tipo_usuario'];
+        $nombre_usuario = $data['nombre'];
+        $correo = $data['correo'];
+    }
     if (!isset($_SESSION['usuario'])) {
         header('Location: index.php');
         die();
         session_destroy();
+    }
+    if($tipo_usuario == 1){
+        header('Location: estudiante.php');
     }
 ?>
 <!DOCTYPE html>
@@ -21,21 +33,21 @@
             <ul>
                 <li><a href="inicio.html">Inicio</a></li>
                 <li><a href="perfil.html">Perfil</a></li>
-                <li><button onclick="cerrarSesion()">Cerrar Sesión</button></li>
+                <li><button onclick = "location.href = 'database/logout.php'">Cerrar Sesión</button></li>
             </ul>
         </nav>
     </header>
     
     <div class="perfil-docente">
         <img src="img/docente.png" alt="Foto del Docente">
-        <span>Profesor: Nombre Docente</span>
+        <span>Profesor: <?php echo $nombre_usuario?> </span>
     </div>
     
     <div class="panel">
         <h2>Panel del Profesor</h2>
         <div class="materias">
-            <div class="materia" onclick="mostrarCursos('Matemáticas')">Matemáticas</div>
-            <div class="materia" onclick="mostrarCursos('Historia')">Historia</div>
+            <div class="materia" onclick="location.href = 'tareas/crear_tareas.php'">Agregar tarea</div>
+            <div class="materia" onclick="location.href = 'tareas/visualizar_tareas.php'">visualizar tareas creadas</div>
             <div class="materia" onclick="mostrarCursos('Ciencias')">Ciencias</div>
         </div>
     </div>

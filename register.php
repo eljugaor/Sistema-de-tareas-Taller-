@@ -1,12 +1,3 @@
-<?php
-    session_start();
-    if (!isset($_SESSION['usuario'])) {
-        header('Location: index.php');
-        die();
-        session_destroy();
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

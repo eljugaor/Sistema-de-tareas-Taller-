@@ -1,3 +1,24 @@
+<?php
+    session_start();
+    include('database/Conexion.php');
+    $user = $_SESSION['usuario'];
+    $sql = "SELECT * FROM cuenta WHERE correo = '$user'";
+    $execute = mysqli_query($conexion, $sql);
+    while($data = $execute->fetch_assoc()){
+        $tipo_usuario = $data['id_tipo_usuario'];
+        $nombre_usuario = $data['nombre'];
+        $correo = $data['correo'];
+    }
+    if (!isset($_SESSION['usuario'])) {
+        header('Location: index.php');
+        die();
+        session_destroy();
+    }
+    if($tipo_usuario == 2){
+        header('Location: profesor.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +33,7 @@
         <h1>Colegio San Francisco de Asís</h1>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="#">Cerrar Sesión</a>
+            <button onclick = "location.href = 'database/logout.php'">Cerrar Sesión</button>
         </nav>
     </header>
     <main>

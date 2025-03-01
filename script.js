@@ -35,4 +35,5 @@ document.getElementById("formulario-tarea").addEventListener("submit", function(
 
 function cerrarSesion() {
     alert("Cerrando sesión...");
+    destroySession();
 }
